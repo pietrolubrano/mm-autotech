@@ -36,7 +36,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <main>
         <Hero copy={dict.hero} whatsappUrl={whatsappUrl} />
         <Services copy={dict.services} whatsappUrl={whatsappUrl} />
-        <Contact copy={dict.contact} whatsappUrl={whatsappUrl} />
+        <Contact copy={dict.contact} whatsappUrl={whatsappUrl} lang={lang} />
       </main>
       <Footer copy={dict.footer} whatsappUrl={whatsappUrl} />
       <WhatsAppFab label={dict.whatsappFab} whatsappUrl={whatsappUrl} />

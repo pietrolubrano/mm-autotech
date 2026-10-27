@@ -8,6 +8,8 @@ import {
   WhatsAppGlyph,
 } from "@/components/icons";
 import type { Dictionary } from "@/lib/dictionaries";
+import type { Locale } from "@/lib/i18n";
+
 import {
   ADDRESS,
   EMAIL,
@@ -20,9 +22,11 @@ import {
 export function Contact({
   copy,
   whatsappUrl,
+  lang
 }: {
   copy: Dictionary["contact"];
   whatsappUrl: string;
+  lang: Locale;
 }) {
   return (
     <section id="contacto" className="py-24">
@@ -115,11 +119,14 @@ export function Contact({
           <div className="relative aspect-[4/3] bg-black">
             <iframe
               title={copy.mapTitle}
-              src={MAPS_EMBED}
-              className="h-full w-full contrast-125 opacity-90 grayscale"
-              loading="lazy"
+              src={MAPS_EMBED(lang)}
+              className="h-full w-full opacity-90"
+              width="600"
+              height="450"
               allowFullScreen
-            />
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface/70 via-transparent to-transparent" />
           </div>
           <a

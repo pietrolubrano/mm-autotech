@@ -3,10 +3,12 @@ import type { Dictionary } from "@/lib/dictionaries";
 import type { Locale } from "@/lib/i18n";
 
 export const MAPS_SEARCH =
-  "https://www.google.com/maps/search/?api=1&query=Av.%20Alcora%2018%2C%2012006%20Castell%C3%B3n%20de%20la%20Plana";
+  "https://www.google.com/maps?cid=1318573056509000447&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF";
 
-export const MAPS_EMBED =
-  "https://maps.google.com/maps?q=Av.%20Alcora%2018%2C%2012006%20Castell%C3%B3n%20de%20la%20Plana&t=&z=16&ie=UTF8&iwloc=&output=embed";
+export const MAPS_EMBED = (locale: Locale) => {
+  const src = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3057.0128006982045!2d-0.05390702358370281!3d39.98581927151227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5fffc1acdcc57f%3A0x124c8335739ebaff!2sMM%20AUTOTECH%20SL!5e0!3m2!1s${locale}!2s${locale}!4v1793120167490!5m2!1s${locale}!2s${locale}&hl=${locale}`;
+  return src;
+};
 
 export const PHONE_TEL = "tel:+34665882655";
 export const PHONE_DISPLAY = "+34 665 88 26 55";
