@@ -2,18 +2,28 @@
 
 import { useEffect, useState } from "react";
 import { ArrowRight, CloseIcon } from "@/components/icons";
+import { LanguageSwitch } from "@/components/language-switch";
 import { LogoMark } from "@/components/logo";
-import { WHATSAPP_URL } from "@/lib/site";
+import type { Dictionary } from "@/lib/dictionaries";
+import type { Locale } from "@/lib/i18n";
 
-const links = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#contacto", label: "Contacto" },
-];
-
-export function Header() {
+export function Header({
+  locale,
+  copy,
+  whatsappUrl,
+}: {
+  locale: Locale;
+  copy: Dictionary["nav"];
+  whatsappUrl: string;
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { href: "#inicio", label: copy.home },
+    { href: "#servicios", label: copy.services },
+    { href: "#contacto", label: copy.contact },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -40,8 +50,8 @@ export function Header() {
           : "bg-transparent"
       } ${scrolled && !open ? "border-b border-white/5" : ""}`}
     >
-      <div className="container-x flex h-20 items-center justify-between">
-        <a href="#inicio" className="group flex items-center gap-2" onClick={() => setOpen(false)}>
+      <div className="container-x flex h-20 items-center justify-between gap-3">
+        <a href="#inicio" className="group flex min-w-0 items-center gap-2" onClick={() => setOpen(false)}>
           <LogoMark glow />
           <div className="leading-none">
             <div className="font-display text-lg font-extrabold tracking-tight whitespace-nowrap text-white">
@@ -66,9 +76,10 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-3">
+          <LanguageSwitch locale={locale} label={copy.language} />
           <a
-            href={WHATSAPP_URL}
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-red hidden text-sm md:inline-flex"
@@ -77,7 +88,7 @@ export function Header() {
           </a>
           <button
             type="button"
-            aria-label="Menú"
+            aria-label={copy.menu}
             aria-expanded={open}
             className="p-2 text-white lg:hidden"
             onClick={() => setOpen((value) => !value)}
@@ -108,8 +119,15 @@ export function Header() {
                 {link.label}
               </a>
             ))}
+            <div className="py-3">
+              <LanguageSwitch
+                locale={locale}
+                label={copy.language}
+                onNavigate={() => setOpen(false)}
+              />
+            </div>
             <a
-              href={WHATSAPP_URL}
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-red mt-3 w-full justify-center"

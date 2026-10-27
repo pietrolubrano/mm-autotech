@@ -2,8 +2,9 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import { SendIcon } from "@/components/icons";
+import type { Dictionary } from "@/lib/dictionaries";
 
-export function ContactForm() {
+export function ContactForm({ copy }: { copy: Dictionary["contact"]["form"] }) {
   const [sent, setSent] = useState(false);
   const timer = useRef<number | null>(null);
 
@@ -19,7 +20,7 @@ export function ContactForm() {
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="mb-2 block text-xs uppercase tracking-[0.2em] text-white/50">
-            Nombre
+            {copy.name}
           </span>
           <input
             type="text"
@@ -30,7 +31,7 @@ export function ContactForm() {
         </label>
         <label className="block">
           <span className="mb-2 block text-xs uppercase tracking-[0.2em] text-white/50">
-            Teléfono
+            {copy.phone}
           </span>
           <input
             type="tel"
@@ -42,7 +43,7 @@ export function ContactForm() {
       </div>
       <label className="block">
         <span className="mb-2 block text-xs uppercase tracking-[0.2em] text-white/50">
-          Mensaje
+          {copy.message}
         </span>
         <textarea
           name="msg"
@@ -52,10 +53,10 @@ export function ContactForm() {
       </label>
       <button type="submit" className="btn-ghost w-full hover:bg-white/10 sm:w-auto">
         {sent ? (
-          "Enviado ✓"
+          copy.sent
         ) : (
           <>
-            Enviar mensaje <SendIcon className="h-4 w-4" />
+            {copy.submit} <SendIcon className="h-4 w-4" />
           </>
         )}
       </button>

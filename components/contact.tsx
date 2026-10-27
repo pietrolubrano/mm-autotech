@@ -7,6 +7,7 @@ import {
   PhoneIcon,
   WhatsAppGlyph,
 } from "@/components/icons";
+import type { Dictionary } from "@/lib/dictionaries";
 import {
   ADDRESS,
   EMAIL,
@@ -14,25 +15,28 @@ import {
   MAPS_SEARCH,
   PHONE_DISPLAY,
   PHONE_TEL,
-  WHATSAPP_URL,
 } from "@/lib/site";
 
-export function Contact() {
+export function Contact({
+  copy,
+  whatsappUrl,
+}: {
+  copy: Dictionary["contact"];
+  whatsappUrl: string;
+}) {
   return (
     <section id="contacto" className="py-24">
       <div className="container-x grid gap-14 lg:grid-cols-[1fr_1.1fr]">
         <div className="space-y-8">
           <div>
             <div className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">
-              Contacto
+              {copy.kicker}
             </div>
             <h2 className="font-display text-4xl leading-tight font-extrabold text-white md:text-5xl">
-              Ven o escríbenos <span className="text-metal">por WhatsApp.</span>
+              {copy.titleLead}
+              <span className="text-metal">{copy.titleAccent}</span>
             </h2>
-            <p className="mt-6 max-w-md text-white/60">
-              Responde a tus dudas y presupuestos de forma rápida. También
-              puedes traernos tu vehículo directamente.
-            </p>
+            <p className="mt-6 max-w-md text-white/60">{copy.body}</p>
           </div>
 
           <div className="surface-glass space-y-5 rounded-2xl p-6">
@@ -43,7 +47,7 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.25em] text-white/50 group-hover:text-primary">
-                    Dirección
+                    {copy.address}
                   </div>
                   <div className="mt-0.5 text-sm text-white group-hover:text-primary">
                     {ADDRESS}
@@ -58,7 +62,7 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.25em] text-white/50 group-hover:text-primary">
-                    Teléfono / WhatsApp
+                    {copy.phone}
                   </div>
                   <div className="mt-0.5 text-sm text-white group-hover:text-primary">
                     {PHONE_DISPLAY}
@@ -73,7 +77,7 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.25em] text-white/50 group-hover:text-primary">
-                    Email
+                    {copy.email}
                   </div>
                   <div className="mt-0.5 text-sm text-white group-hover:text-primary">
                     {EMAIL}
@@ -87,32 +91,30 @@ export function Contact() {
               </div>
               <div>
                 <div className="text-[10px] uppercase tracking-[0.25em] text-white/50">
-                  Horario
+                  {copy.hours}
                 </div>
-                <div className="mt-0.5 text-sm text-white">
-                  Lun–Vie · 09:00 – 19:00 · Sáb · 09:00 – 14:00
-                </div>
+                <div className="mt-0.5 text-sm text-white">{copy.hoursValue}</div>
               </div>
             </div>
           </div>
 
           <a
-            href={WHATSAPP_URL}
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-red w-full justify-center py-4 text-base"
           >
             <WhatsAppGlyph className="h-5 w-5 fill-current" />
-            Escribir por WhatsApp
+            {copy.whatsapp}
           </a>
 
-          <ContactForm />
+          <ContactForm copy={copy.form} />
         </div>
 
         <div className="h-fit overflow-hidden rounded-2xl border border-white/10 bg-surface">
           <div className="relative aspect-[4/3] bg-black">
             <iframe
-              title="Ubicación MM AUTOTECH en Google Maps"
+              title={copy.mapTitle}
               src={MAPS_EMBED}
               className="h-full w-full contrast-125 opacity-90 grayscale"
               loading="lazy"
@@ -126,7 +128,7 @@ export function Contact() {
             rel="noopener noreferrer"
             className="flex w-full items-center justify-center gap-2 border-t border-white/10 py-4 text-xs uppercase tracking-[0.2em] text-white/70 transition-colors hover:bg-white/5 hover:text-white"
           >
-            Abrir dirección en Google Maps
+            {copy.mapLink}
             <ArrowRight className="h-3.5 w-3.5" />
           </a>
         </div>

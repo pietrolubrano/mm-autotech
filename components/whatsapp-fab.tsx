@@ -1,13 +1,18 @@
 import { WhatsAppGlyph } from "@/components/icons";
-import { WHATSAPP_URL } from "@/lib/site";
 
-export function WhatsAppFab() {
+export function WhatsAppFab({
+  label,
+  whatsappUrl,
+}: {
+  label: string;
+  whatsappUrl: string;
+}) {
   return (
     <a
-      href={WHATSAPP_URL}
+      href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Contactar por WhatsApp"
+      aria-label={label}
       className="group fixed right-6 bottom-6 z-40"
     >
       <span className="absolute inset-0 animate-ping rounded-full bg-primary/40" />
