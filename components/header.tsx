@@ -11,18 +11,20 @@ export function Header({
   locale,
   copy,
   whatsappUrl,
+  localeHrefs,
 }: {
   locale: Locale;
   copy: Dictionary["nav"];
   whatsappUrl: string;
+  localeHrefs?: Partial<Record<Locale, string>>;
 }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   const links = [
-    { href: "#inicio", label: copy.home },
-    { href: "#servicios", label: copy.services },
-    { href: "#contacto", label: copy.contact },
+    { href: `/${locale}#inicio`, label: copy.home },
+    { href: `/${locale}#servicios`, label: copy.services },
+    { href: `/${locale}#contacto`, label: copy.contact },
   ];
 
   useEffect(() => {
@@ -51,7 +53,7 @@ export function Header({
       } ${scrolled && !open ? "border-b border-white/5" : ""}`}
     >
       <div className="container-x flex h-20 items-center justify-between gap-3">
-        <a href="#inicio" className="group flex min-w-0 items-center gap-2" onClick={() => setOpen(false)}>
+        <a href={`/${locale}#inicio`} className="group flex min-w-0 items-center gap-2" onClick={() => setOpen(false)}>
           <LogoMark glow />
           <div className="leading-none">
             <div className="font-display text-lg font-extrabold tracking-tight whitespace-nowrap text-white">
@@ -77,7 +79,7 @@ export function Header({
         </nav>
 
         <div className="flex shrink-0 items-center gap-3">
-          <LanguageSwitch locale={locale} label={copy.language} />
+          <LanguageSwitch locale={locale} label={copy.language} hrefs={localeHrefs} />
           <a
             href={whatsappUrl}
             target="_blank"
@@ -123,6 +125,7 @@ export function Header({
               <LanguageSwitch
                 locale={locale}
                 label={copy.language}
+                hrefs={localeHrefs}
                 onNavigate={() => setOpen(false)}
               />
             </div>
