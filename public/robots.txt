@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://mm-autotech.vercel.app/sitemap.xml

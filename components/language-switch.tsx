@@ -12,10 +12,12 @@ export function LanguageSwitch({
   locale,
   label,
   onNavigate,
+  hrefs,
 }: {
   locale: Locale;
   label: string;
   onNavigate?: () => void;
+  hrefs?: Partial<Record<Locale, string>>;
 }) {
   return (
     <nav aria-label={label} className="flex items-center text-sm">
@@ -29,7 +31,7 @@ export function LanguageSwitch({
               </span>
             ) : null}
             <Link
-              href={`/${code}`}
+              href={hrefs?.[code] ?? `/${code}`}
               hrefLang={code}
               lang={code}
               prefetch

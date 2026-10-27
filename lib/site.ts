@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import type { Dictionary } from "@/lib/dictionaries";
 import type { Locale } from "@/lib/i18n";
 
+export const SITE_URL = "https://mm-autotech.vercel.app";
+
 export const MAPS_SEARCH =
   "https://www.google.com/maps?cid=1318573056509000447&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF";
 
@@ -52,6 +54,7 @@ export function siteMetadata(
   canonical = false,
 ): Metadata {
   return {
+    metadataBase: new URL(SITE_URL),
     title: dict.meta.title,
     description: dict.meta.description,
     authors: [{ name: "MM AUTOTECH" }],
