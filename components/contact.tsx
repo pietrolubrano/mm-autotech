@@ -115,7 +115,7 @@ export function Contact({
           <ContactForm copy={copy.form} />
         </div>
 
-        <div className="h-fit overflow-hidden rounded-2xl border border-white/10 bg-surface">
+        <div className="-mx-6 h-fit w-[calc(100%+3rem)] overflow-hidden border-y border-white/10 bg-surface md:-mx-12 md:w-[calc(100%+6rem)] lg:mx-0 lg:w-auto lg:rounded-2xl lg:border">
           <div className="relative aspect-[4/3] bg-black">
             <iframe
               title={copy.mapTitle}
