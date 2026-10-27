@@ -1,13 +1,13 @@
 import { cacheLife } from "next/cache";
 import { FacebookIcon, InstagramIcon } from "@/components/icons";
 import { LogoMark } from "@/components/logo";
+import type { Dictionary } from "@/lib/dictionaries";
 import {
   ADDRESS,
   EMAIL,
   MAPS_SEARCH,
   PHONE_DISPLAY,
   PHONE_TEL,
-  WHATSAPP_URL,
 } from "@/lib/site";
 
 async function copyrightYear() {
@@ -16,7 +16,13 @@ async function copyrightYear() {
   return new Date().getFullYear();
 }
 
-export async function Footer() {
+export async function Footer({
+  copy,
+  whatsappUrl,
+}: {
+  copy: Dictionary["footer"];
+  whatsappUrl: string;
+}) {
   const year = await copyrightYear();
 
   return (
@@ -30,14 +36,11 @@ export async function Footer() {
                 MM AUTOTECH
               </div>
             </div>
-            <p className="mt-4 max-w-xs text-sm text-white/50">
-              Taller multimarca especializado en mantenimiento y reparación con
-              tecnología profesional.
-            </p>
+            <p className="mt-4 max-w-xs text-sm text-white/50">{copy.blurb}</p>
           </div>
           <div>
             <div className="mb-5 text-xs uppercase tracking-[0.25em] text-white/60">
-              Contacto
+              {copy.contact}
             </div>
             <ul className="space-y-3 text-sm">
               <li>
@@ -66,7 +69,7 @@ export async function Footer() {
               </li>
               <li>
                 <a
-                  href={WHATSAPP_URL}
+                  href={whatsappUrl}
                   className="text-white/60 transition-colors hover:text-primary"
                 >
                   WhatsApp
@@ -76,21 +79,21 @@ export async function Footer() {
           </div>
           <div>
             <div className="mb-5 text-xs uppercase tracking-[0.25em] text-white/60">
-              Horario
+              {copy.hours}
             </div>
             <ul className="space-y-3 text-sm">
               <li>
-                <span className="text-white/60">Lun–Vie · 09:00–19:00</span>
+                <span className="text-white/60">{copy.week}</span>
               </li>
               <li>
-                <span className="text-white/60">Sáb · 09:00–14:00</span>
+                <span className="text-white/60">{copy.saturday}</span>
               </li>
             </ul>
           </div>
         </div>
         <div className="hairline my-10" />
         <div className="flex flex-col items-center justify-between gap-4 text-xs text-white/40 md:flex-row">
-          <div>© {year} MM AUTOTECH · Mecánica de precisión.</div>
+          <div>{copy.copyright.replace("{year}", String(year))}</div>
           <div className="flex items-center gap-4">
             <a
               href="#"

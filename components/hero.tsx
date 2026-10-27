@@ -1,8 +1,15 @@
 import Image from "next/image";
 import { ArrowRight, WhatsAppGlyph } from "@/components/icons";
-import { ADDRESS, PHONE_DISPLAY, WHATSAPP_URL } from "@/lib/site";
+import type { Dictionary } from "@/lib/dictionaries";
+import { ADDRESS, PHONE_DISPLAY } from "@/lib/site";
 
-export function Hero() {
+export function Hero({
+  copy,
+  whatsappUrl,
+}: {
+  copy: Dictionary["hero"];
+  whatsappUrl: string;
+}) {
   return (
     <section
       id="inicio"
@@ -10,7 +17,7 @@ export function Hero() {
     >
       <Image
         src="/hero-repair.jpg"
-        alt="Mecánico trabajando en motor de alto rendimiento en MM AUTOTECH"
+        alt={copy.imageAlt}
         fill
         priority
         sizes="100vw"
@@ -21,30 +28,30 @@ export function Hero() {
         <div className="max-w-3xl">
           <div className="surface-glass mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-white/80">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-            Taller multimarca · Castellón de la Plana
+            {copy.eyebrow}
           </div>
           <h1 className="font-display text-[clamp(2.5rem,8vw,6rem)] leading-[0.95] font-extrabold tracking-tight text-white">
-            Mecánica de <span className="text-metal">precisión.</span>
+            {copy.titleLead}
+            <span className="text-metal">{copy.titleAccent}</span>
           </h1>
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/70 md:text-xl">
-            Especialistas en mantenimiento y reparación multimarca. Presupuesto
-            claro, trabajos garantizados y atención directa por WhatsApp.
+            {copy.body}
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
-              href={WHATSAPP_URL}
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-red px-8 py-4 text-base"
             >
               <WhatsAppGlyph className="h-5 w-5 fill-current" />
-              Escribir por WhatsApp
+              {copy.whatsapp}
             </a>
             <a
               href="#contacto"
               className="btn-ghost hover:border-white/30 hover:bg-white/10"
             >
-              Ver dirección <ArrowRight className="h-4 w-4" />
+              {copy.address} <ArrowRight className="h-4 w-4" />
             </a>
           </div>
           <div className="mt-12 flex flex-wrap items-center gap-6 text-sm text-white/60">
