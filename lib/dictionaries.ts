@@ -25,6 +25,7 @@ export type Dictionary = {
   nav: {
     home: string;
     services: string;
+    reviews: string;
     contact: string;
     menu: string;
     language: string;
@@ -45,6 +46,24 @@ export type Dictionary = {
     body: string;
     quote: string;
     items: { id: ServiceId; title: string }[];
+  };
+  reviews: {
+    kicker: string;
+    titleLead: string;
+    titleAccent: string;
+    body: string;
+    score: string;
+    scoreValue: number;
+    scoreLabel: string;
+    googleLink: string;
+    starsLabel: string;
+    items: {
+      name: string;
+      rating: number;
+      when: string;
+      text: string;
+      authorReviews?: string;
+    }[];
   };
   contact: {
     kicker: string;
@@ -105,6 +124,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     nav: {
       home: "Inicio",
       services: "Servicios",
+      reviews: "Reseñas",
       contact: "Contacto",
       menu: "Menú",
       language: "Idioma",
@@ -135,6 +155,56 @@ export const dictionaries: Record<Locale, Dictionary> = {
         { id: "climate", title: "Aire acondicionado" },
         { id: "cooling", title: "Refrigeración" },
         { id: "gearbox", title: "Caja de cambios" },
+      ],
+    },
+    reviews: {
+      kicker: "Google",
+      titleLead: "Lo que dicen ",
+      titleAccent: "en Google.",
+      body: "Opiniones de clientes del taller en Castellón de la Plana.",
+      score: "4,6",
+      scoreValue: 4.6,
+      scoreLabel: "Nota en Google",
+      googleLink: "Ver en Google Maps",
+      starsLabel: "{n} de 5",
+      items: [
+        {
+          name: "Lorea Navarro almena",
+          rating: 5,
+          when: "Hace 3 meses",
+          authorReviews: "4 reseñas",
+          text: "El trato muy bueno y muy profesionales. Y muy rápidos. Sin duda ninguna cuando volvamos a tener un problema con el coche iremos a ellos",
+        },
+        {
+          name: "Jose gregorio Hernandez silva",
+          rating: 5,
+          when: "Hace 4 meses",
+          text: "Muy buen trato. Excelente trabajo el de los chicos. Recomendado al 100% el coche ha quedado de lujo. Calidad y confianza",
+        },
+        {
+          name: "Dalmiro",
+          rating: 5,
+          when: "Hace 5 meses",
+          text: "Taller de confianza total. Siempre llevo mi coche para revisión pre itv. Muy profesionales y sobre todo honestos. Trato impecable y buen precio. Recomendados 100%",
+        },
+        {
+          name: "Ricardo Solsona",
+          rating: 5,
+          when: "Hace 5 meses",
+          text: "Muy buen taller. Trabajan mecánica y electricidad y el servicio es de 10. Profesional, rápido y con buenos precios. Se nota cuando alguien hace las cosas con ganas y bien hechas. Recomendadísimo.",
+        },
+        {
+          name: "Cristhian David",
+          rating: 5,
+          when: "Hace 3 meses",
+          text: "Excelente servicio y trato total mente buenos profesionales vengo a vacaciones con mi.auto desde belgica y el servicio es excelente lo recomiendo de verdad",
+        },
+        {
+          name: "Luis Orts Gomez",
+          rating: 5,
+          when: "Hace 1 mes",
+          text: "Que suerte tuve de tener el pinchazo delante de este taller! Tenia que volver a Barcelona urgente y el señor me reparó el neumatico, fuera de horario y com muy buena cara, en menos de 20 minutos. Gente con ganas de trabajar y ayudar! Muchas gracias!",
+        },
       ],
     },
     contact: {
@@ -193,6 +263,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     nav: {
       home: "Home",
       services: "Services",
+      reviews: "Reviews",
       contact: "Contact",
       menu: "Menu",
       language: "Language",
@@ -222,6 +293,56 @@ export const dictionaries: Record<Locale, Dictionary> = {
         { id: "climate", title: "Air conditioning" },
         { id: "cooling", title: "Cooling" },
         { id: "gearbox", title: "Gearbox" },
+      ],
+    },
+    reviews: {
+      kicker: "Google",
+      titleLead: "What customers say ",
+      titleAccent: "on Google.",
+      body: "Reviews from customers of the workshop in Castellón de la Plana.",
+      score: "4.6",
+      scoreValue: 4.6,
+      scoreLabel: "Google rating",
+      googleLink: "See on Google Maps",
+      starsLabel: "{n} out of 5",
+      items: [
+        {
+          name: "Lorea Navarro almena",
+          rating: 5,
+          when: "3 months ago",
+          authorReviews: "4 reviews",
+          text: "Really good service, and very professional. And very fast. Without any doubt, the next time we have a problem with the car we will go back to them.",
+        },
+        {
+          name: "Jose gregorio Hernandez silva",
+          rating: 5,
+          when: "4 months ago",
+          text: "Very good service. Excellent work from the team. Recommended 100%. The car looks great. Quality and trust.",
+        },
+        {
+          name: "Dalmiro",
+          rating: 5,
+          when: "5 months ago",
+          text: "A workshop you can trust completely. I always take my car in for the pre-ITV check. Very professional and, above all, honest. Impeccable service and a fair price. Recommended 100%.",
+        },
+        {
+          name: "Ricardo Solsona",
+          rating: 5,
+          when: "5 months ago",
+          text: "A very good workshop. They do mechanical and electrical work, and the service is a 10. Professional, fast, and fairly priced. You can tell when someone enjoys the work and does it properly. Highly recommended.",
+        },
+        {
+          name: "Cristhian David",
+          rating: 5,
+          when: "3 months ago",
+          text: "Excellent service and treatment, truly good professionals. I come on holiday with my car from Belgium and the service is excellent. I really recommend them.",
+        },
+        {
+          name: "Luis Orts Gomez",
+          rating: 5,
+          when: "1 month ago",
+          text: "I was lucky to get a puncture right in front of this workshop! I had to get back to Barcelona urgently, and he repaired the tyre after hours, with a smile, in less than 20 minutes. People who want to work and to help. Thank you so much!",
+        },
       ],
     },
     contact: {

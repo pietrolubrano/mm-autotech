@@ -4,6 +4,7 @@ import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
+import { Reviews } from "@/components/reviews";
 import { Services } from "@/components/services";
 import { WhatsAppFab } from "@/components/whatsapp-fab";
 import { dictionaries } from "@/lib/dictionaries";
@@ -36,6 +37,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <main>
         <Hero copy={dict.hero} whatsappUrl={whatsappUrl} />
         <Services copy={dict.services} whatsappUrl={whatsappUrl} locale={lang} />
+        <Reviews copy={dict.reviews} />
         <Contact copy={dict.contact} whatsappUrl={whatsappUrl} lang={lang} />
       </main>
       <Footer copy={dict.footer} whatsappUrl={whatsappUrl} />
