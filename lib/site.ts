@@ -14,7 +14,7 @@ export const MAPS_EMBED = (locale: Locale) => {
 
 export const PHONE_TEL = "tel:+34665882655";
 export const PHONE_DISPLAY = "+34 665 88 26 55";
-export const EMAIL = "MMAUTOTECHMM@GMAIL.COM";
+export const EMAIL = "mmautotechmm@gmail.com";
 export const ADDRESS = "Av. Alcora 18, 12006 Castellón de la Plana";
 
 const WHATSAPP_PHONE = "34665882655";
