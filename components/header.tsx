@@ -24,6 +24,7 @@ export function Header({
   const links = [
     { href: `/${locale}#inicio`, label: copy.home },
     { href: `/${locale}#servicios`, label: copy.services },
+    { href: `/${locale}#resenas`, label: copy.reviews },
     { href: `/${locale}#contacto`, label: copy.contact },
   ];
 

@@ -40,11 +40,6 @@ export function buildJsonLd(description: string) {
       addressLocality: "Castellón de la Plana",
       addressCountry: "ES",
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "180",
-    },
   };
 }
 
